@@ -1,5 +1,5 @@
 # MTK platform .rc configure
-
+import /system/etc/init/init.safailnet.rc
 import /vendor/etc/init/hw/init.connectivity.rc
 import /vendor/etc/init/hw/init.mt6771.usb.rc
 import /vendor/etc/init/hw/init.mal.rc
@@ -11,8 +11,6 @@ on early-init
     # boot perf. tune
     write /proc/perfmgr/legacy/boot_freq "5 0 0 0"
     write /sys/devices/platform/10012000.dvfsrc_top/helio-dvfsrc/dvfsrc_debug "kir_emi 0"
-    mount debugfs debugfs /sys/kernel/debug
-    chmod 0755 /sys/kernel/debug
 
 on init
     # create io boost group
@@ -33,7 +31,7 @@ on init
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
     write /dev/cpuset/background/cpus 0-3
-    write /dev/cpuset/system-background/cpus 0-5
+    write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
 
     # Logger
@@ -674,8 +672,8 @@ on boot
     write /proc/bootprof "INIT:boot"
 
     # IO write.
-    write /proc/sys/vm/dirty_writeback_centisecs 500
-    write /proc/sys/vm/dirty_ratio 21
+    write /proc/sys/vm/dirty_writeback_centisecs 3000
+    write /proc/sys/vm/dirty_ratio 10
     
     chmod 0660 /sys/power/autosleep
 
@@ -940,6 +938,8 @@ on property:sys.boot_completed=1
     write /sys/block/sdc/queue/nr_requests 128
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
+    #Reinit lmkd to reconfigure lmkd properties
+    setprop lmkd.reinit 1
 
 # start EAS+
 on property:sys.boot_completed=1
@@ -952,6 +952,7 @@ on property:sys.boot_completed=1
     write /dev/stune/foreground/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.prefer_idle 0
     write /dev/stune/rt/schedtune.prefer_idle 0
+    write /dev/stune/top-app/schedtune.boost 1
     write /proc/sys/kernel/sched_migration_cost_ns 200000
 
     # restore perf. parameters
@@ -1102,6 +1103,10 @@ on property:sys.boot_completed=1
     stop boot_log
     stop boot_log_crash
     stop boot_log_kernel
+    
+# Restrict permissions to socket file 
+# to hide Magisk & co.
+    chmod 440 /proc/net/unix
 
 on property:persist.sys.dt2w=0
     write /proc/touchpanel/double_tap_enable 0

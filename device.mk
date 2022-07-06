@@ -11,12 +11,20 @@ $(call inherit-product, vendor/oppo/CPH1859/CPH1859-vendor.mk)
 PRODUCT_PACKAGES += \
     android.hardware.audio@4.0.vendor \
     android.hardware.soundtrigger@2.1-impl \
+    android.hardware.soundtrigger@2.1 \
+    android.hardware.soundtrigger@2.1.vendor \
     audio.a2dp.default \
     audio.bluetooth.default \
     audio.r_submix.default \
     audio.usb.default \
     libaudiopreprocessing \
-    libtinycompress
+    libtinycompress \
+    libtinycompress.vendor \
+    libavservices_minijail \
+    libavservices_minijail.vendor \
+    libavservices_minijail_vendor \
+    tinymix \
+    libxml2.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
@@ -26,7 +34,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
-
+    
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
@@ -38,11 +46,21 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.a2dp@1.0.vendor \
-    android.hardware.bluetooth@1.0.vendor
+    android.hardware.bluetooth@1.0.vendor \
+
+# Cgroup and task_profiles
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4.vendor \
+    android.hardware.camera.device@3.2.vendor \
+    android.hardware.camera.device@3.3.vendor \
     android.hardware.camera.device@3.4.vendor \
+    android.hardware.camera.device@3.5.vendor \
+    android.hardware.camera.provider@2.4 \
     android.hardware.camera.provider@2.4.vendor
 
 PRODUCT_PACKAGES += \
@@ -187,10 +205,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     engineer_vendor_shell.sh \
     init.oppo.securetemplet.sh \
+    set_zram.sh \
     init.connectivity.rc \
     init.modem.rc \
     init.mt6771.rc \
     init.mt6771.usb.rc \
+    init.safailnet.rc \
     init.oppo.reserve.rc \
     init.sensor_1_0.rc \
     fstab.mt6771 \
@@ -240,13 +260,42 @@ PRODUCT_COPY_FILES += \
     prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libc++.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libc++-v28.so \
     prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcompiler_rt.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcompiler_rt.so \
     prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhwbinder.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhwbinder-v28.so \
+    prebuilts/vndk/v28/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v28.so \
     prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so
+
+PRODUCT_EXTRA_VNDK_VERSIONS := 28
 
 # WiFi
 PRODUCT_PACKAGES += \
+    WifiOverlay \
     android.hardware.wifi@1.2.vendor \
-    android.hardware.wifi.hostapd@1.3.vendor \
-    android.hardware.wifi.supplicant@1.1.vendor
+    android.hardware.wifi.supplicant@1.1.vendor \
+    android.hardware.wifi@1.0 \
+    android.hardware.wifi@1.0.vendor \
+    android.hardware.wifi@1.1 \
+    android.hardware.wifi@1.1.vendor \
+    android.hardware.wifi@1.2 \
+    android.hardware.wifi@1.2.vendor \
+    android.hardware.wifi@1.3 \
+    android.hardware.wifi@1.3.vendor \
+    android.hardware.wifi@1.4 \
+    android.hardware.wifi@1.4.vendor \
+    android.hardware.wifi.supplicant@1.0 \
+    android.hardware.wifi.supplicant@1.0.vendor \
+    android.hardware.wifi.supplicant@1.1 \
+    android.hardware.wifi.supplicant@1.1.vendor \
+    android.hardware.wifi.supplicant@1.2 \
+    android.hardware.wifi.supplicant@1.2.vendor \
+    android.hardware.wifi.supplicant@1.3 \
+    android.hardware.wifi.supplicant@1.3.vendor \
+    android.hardware.wifi.hostapd@1.0 \
+    android.hardware.wifi.hostapd@1.0.vendor \
+    android.hardware.wifi.hostapd@1.1 \
+    android.hardware.wifi.hostapd@1.1.vendor \
+    android.hardware.wifi.hostapd@1.2 \
+    android.hardware.wifi.hostapd@1.2.vendor \
+    android.hardware.wifi.hostapd@1.3 \
+    android.hardware.wifi.hostapd@1.3.vendor
 
 PRODUCT_PACKAGES += \
     libkeystore-engine-wifi-hidl \
@@ -256,3 +305,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
+
+# Properties
+-include $(LOCAL_PATH)/configs/mtk_services_log.mk

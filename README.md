@@ -1,4 +1,6 @@
 Device Tree for realme 1
+
+## Credits - [All pros](https://github.com/realme-mt6771-devs)
 ===========================================
 
 The realme 1 (codenamed _"CPH1859 / CPH1861"_ ) is a smartphone from realme.
