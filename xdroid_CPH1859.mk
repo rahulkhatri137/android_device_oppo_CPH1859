@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2022 The LineageOS Project
+# Copyright (C) 2021-2022 The xdroidOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -12,14 +12,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk
 # Inherit from CPH1859 device
 $(call inherit-product, device/oppo/CPH1859/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common CipherOS stuff.
+$(call inherit-product, vendor/xdroid/config/common.mk)
 
-# Boot Animation
-TARGET_BOOT_ANIMATION_RES := 1080
+# xdroid Stuff
+XDROID_BOOT := 1080
+XDROID_MAINTAINER := rahulkhatri137
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := false
+TARGET_INCLUDE_STOCK_ARCORE := false
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_CPH1859
+PRODUCT_NAME := xdroid_CPH1859
 PRODUCT_DEVICE := CPH1859
 PRODUCT_BRAND := oppo
 PRODUCT_MODEL := realme 1

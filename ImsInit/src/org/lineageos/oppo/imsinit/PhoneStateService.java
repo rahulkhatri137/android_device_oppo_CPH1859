@@ -50,6 +50,17 @@ public class PhoneStateService extends Service {
                             Log.i(LOG_TAG, "Network "+ network  +" is available!");
                          }
                     }); 
+                    Log.i(LOG_TAG, "Waiting for 20 seconds after that clear data of mediatek ims");
+                        try {
+                            // wait for 20 seconds
+                            Thread.sleep(20000);
+                            // clearing mediatek ims app data
+                            Log.i(LOG_TAG, "Clearing data of mediatek ims app");
+                            Runtime runtime = Runtime.getRuntime();
+                            runtime.exec("pm clear com.mediatek.ims");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                 }).start();
             }
         }
