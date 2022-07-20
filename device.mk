@@ -7,6 +7,10 @@
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oppo/CPH1859/CPH1859-vendor.mk)
 
+#Remove Unwanted Packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@4.0.vendor \
