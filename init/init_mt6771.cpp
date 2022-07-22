@@ -95,8 +95,8 @@ static void workaround_snet_properties() {
 void vendor_load_properties()
 {
     // fingerprint
-    property_override("ro.build.description", "redfin-user 12 SP2A.220305.012 8177914 release-keys");
-    property_override_prop("ro.build.fingerprint", "google/redfin/redfin:12/SP2A.220305.012/8177914:user/release-keys");
+    property_override("ro.build.description", "redfin-user 12 SQ3A.220705.003.A1 8672226 release-keys");
+    property_override_prop("ro.build.fingerprint", "google/redfin/redfin:12/SQ3A.220705.003.A1/8672226:user/release-keys");
 
     // Workaround SafetyNet
     workaround_snet_properties();
