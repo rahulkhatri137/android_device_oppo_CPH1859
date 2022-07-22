@@ -15,6 +15,7 @@ LOCAL_OVERRIDES_PACKAGES := \
     DMService \
     GCS \
     GoogleTTS \
+    MaestroPrebuilt \
     Maps \
     MyVerizonServices \
     OBDM_Permissions \
@@ -32,6 +33,7 @@ LOCAL_OVERRIDES_PACKAGES := \
     SoundAmplifierPrebuilt \
     SprintDM \
     SprintHM \
+    talkback \
     Tycho \
     USCCDM \
     Via \

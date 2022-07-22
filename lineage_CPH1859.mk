@@ -20,6 +20,8 @@ SUSHI_BOOTANIMATION := 1080
 RICE_MAINTAINER := rahulkhatri137
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_BUILD_GRAPHENEOS_CAMERA := false
+WITH_GMS := true
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_CPH1859
