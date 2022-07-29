@@ -17,6 +17,8 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # riceDroid Stuff
 SUSHI_BOOTANIMATION := 1080
+TARGET_ENABLE_BLUR := true
+RICE_CHIPSET := mt6771
 RICE_MAINTAINER := rahulkhatri137
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
