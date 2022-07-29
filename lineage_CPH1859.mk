@@ -14,6 +14,9 @@ $(call inherit-product, device/oppo/CPH1859/device.mk)
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# disable/enable blur support, default is false
+
+TARGET_ENABLE_BLUR := true
 
 # riceDroid Stuff
 SUSHI_BOOTANIMATION := 1080
