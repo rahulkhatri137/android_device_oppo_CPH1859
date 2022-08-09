@@ -821,6 +821,23 @@ vendor/lib64/vendor.mediatek.hardware.pq@2.1.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.2.so
 vendor/lib64/vendor.mediatek.hardware.pq@2.3.so
 
+# Engineer Mode
+-app/OppoEngineerMode/OppoEngineerMode.apk
+lib/libem_aal_jni.so
+lib/libem_audio_jni.so
+lib/libem_gpio_jni.so
+lib/libem_sensor_jni.so
+lib/libem_support_jni.so
+lib/libem_usb_jni.so
+lib/libem_wifi_jni.so
+lib64/libem_aal_jni.so
+lib64/libem_audio_jni.so
+lib64/libem_gpio_jni.so
+lib64/libem_sensor_jni.so
+lib64/libem_support_jni.so
+lib64/libem_usb_jni.so
+lib64/libem_wifi_jni.so
+
 # Fingerprint
 vendor/bin/hw/vendor.oppo.hardware.biometrics.face@1.0-service
 vendor/bin/hw/vendor.oppo.hardware.biometrics.fingerprintpay@1.0-service

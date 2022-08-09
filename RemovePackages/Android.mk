@@ -5,7 +5,9 @@ LOCAL_MODULE := RemovePackages
 LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_TAGS := optional
 LOCAL_OVERRIDES_PACKAGES := \
+    AndroidAutoStubPrebuilt \
     AmbientSensePrebuilt \
+    SetupWizardPrebuilt \
     PixelSetupWizard \
     arcore \
     ConnMO \
@@ -15,6 +17,7 @@ LOCAL_OVERRIDES_PACKAGES := \
     DMService \
     GCS \
     GoogleTTS \
+    MaestroPrebuilt \
     Maps \
     MyVerizonServices \
     OBDM_Permissions \
@@ -32,6 +35,7 @@ LOCAL_OVERRIDES_PACKAGES := \
     SoundAmplifierPrebuilt \
     SprintDM \
     SprintHM \
+    talkback \
     Tycho \
     USCCDM \
     Via \
