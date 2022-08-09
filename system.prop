@@ -51,6 +51,9 @@ debug.hwui.use_buffer_age=false
 # Pre-Rendering
 ro.vendor.perf.scroll_opt=true
 
+# Seamless transfer
+sys.fflag.override.settings_seamless_transfer=true
+
 # Radio
 persist.sys.fflag.override.settings_provider_model=false
 
