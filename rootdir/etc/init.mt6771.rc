@@ -867,6 +867,7 @@ on boot
     chown system radio /dev/ttyGS1
 
     stop console
+    setprop init.svc.console stopped
 
     # iwpriv for sar
     chown system system /system/bin/iwpriv
