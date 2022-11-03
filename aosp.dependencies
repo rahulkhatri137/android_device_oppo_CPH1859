@@ -1,0 +1,14 @@
+[
+  {
+    "remote":      "github",
+    "repository":  "rahulkhatri137/vendor_oppo_CPH1859",
+    "target_path": "vendor/oppo/CPH1859",
+    "branch":      "twelve"
+  },
+  {
+    "remote":      "github",
+    "repository":  "rahulkhatri137/android_kernel_oppo_CPH1859",
+    "target_path": "kernel/oppo/CPH1859",
+    "branch":      "twelve"
+  }
+]
