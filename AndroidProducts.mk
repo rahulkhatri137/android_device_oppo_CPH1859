@@ -1,8 +1,8 @@
 #
-# Copyright (C) 2021-2022 The LineageOS Project
+# Copyright (C) 2022-2023 The xdroidOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_CPH1859.mk
+    $(LOCAL_DIR)/xdroid_CPH1859.mk
